@@ -1,0 +1,46 @@
+{
+  "name": "eslint-plugin-func-params-args",
+  "version": "1.0.0",
+  "description": "Limit the number of function parameters and arguments with ease and flexibility",
+  "author": "Abdulrahman (Abdu) Assabri <abdusabri@abdusabri.com>",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "function",
+    "func",
+    "args",
+    "params",
+    "parameters",
+    "arguments"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdusabri/eslint-plugin-func-params-args.git"
+  },
+  "homepage": "https://github.com/abdusabri/eslint-plugin-func-params-args",
+  "bugs": {
+    "url": "https://github.com/abdusabri/eslint-plugin-func-params-args/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "peerDependencies": {
+    "eslint": "^2 || ^3 || ^4 || ^5 || ^6 || ^7.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^2 || ^3 || ^4 || ^5 || ^6 || ^7.1.0",
+    "mocha": "^7.2.0"
+  },
+  "files": [
+    "*.md",
+    "LICENSE",
+    "docs",
+    "lib"
+  ]
+}
