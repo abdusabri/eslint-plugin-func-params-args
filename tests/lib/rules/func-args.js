@@ -15,7 +15,7 @@ var rule = require("../../../lib/rules/func-args"),
 // Tests
 //------------------------------------------------------------------------------
 
-const options = [{ foo: 3, bar: 2 }];
+const options = [{ foo: 3, bar: 2, global: 1 }];
 
 var ruleTester = new RuleTester();
 ruleTester.run("func-args", rule, {
@@ -30,6 +30,8 @@ ruleTester.run("func-args", rule, {
     "a.bar('arg1');",
     "bar('arg1', 'arg2');",
     "a.bar('arg1', 'arg2');",
+    "baz('arg1');",
+    "a.baz('arg1');",
   ].map((code) => ({
     code,
     options,
@@ -121,6 +123,28 @@ ruleTester.run("func-args", rule, {
           type: "CallExpression",
           message:
             "bar has been called with too many arguments (4). Maximum allowed is (2).",
+        },
+      ],
+    },
+    {
+      code: "baz('arg1', arg2);",
+      options,
+      errors: [
+        {
+          type: "CallExpression",
+          message:
+            "baz has been called with too many arguments (2). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: "a.baz('arg1', arg2);",
+      options,
+      errors: [
+        {
+          type: "CallExpression",
+          message:
+            "baz has been called with too many arguments (2). Maximum allowed is (1).",
         },
       ],
     },
