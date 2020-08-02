@@ -32,10 +32,18 @@ ruleTester.run("func-args", rule, {
     "a.bar('arg1', 'arg2');",
     "baz('arg1');",
     "a.baz('arg1');",
-  ].map((code) => ({
-    code,
-    options,
-  })),
+  ]
+    .map((code) => ({
+      code,
+      options,
+    }))
+    .concat(
+      ["baz('arg1', arg2);", "a.baz('arg1', arg2);"].map((code) => ({
+        // these cases would be invalid if a global limit is set (covered in the invalid cases below)
+        code,
+        options: [{ foo: 3, bar: 2 }],
+      }))
+    ),
 
   invalid: [
     {
