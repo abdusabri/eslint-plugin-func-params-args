@@ -43,7 +43,11 @@ ruleTester.run("func-args", rule, {
         code,
         options: [{ foo: 3, bar: 2 }],
       }))
-    ),
+    )
+    .concat([
+      "foo('arg1','arg2','arg3','arg4','arg5');",
+      "a.foo('arg1','arg2','arg3','arg4','arg5');",
+    ]),
 
   invalid: [
     {
