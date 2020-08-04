@@ -5,3 +5,9 @@ package-lock.json
 .vscode
 
 dist
+
+*.log
+
+coverage
+
+.nyc_output
