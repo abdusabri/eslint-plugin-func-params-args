@@ -26,7 +26,7 @@
   "engines": {
     "node": ">=4"
   },
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha tests --recursive",
     "build": "rimraf dist && minify lib -d dist",
