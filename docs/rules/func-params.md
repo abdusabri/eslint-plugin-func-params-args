@@ -1,31 +1,114 @@
 # enforce the number of parameters used in a function definition or expression (func-params)
 
-Please describe the origin of the rule here.
+This rule allows you to set a max limit for the number of parameters used in function definitions, function expressions, and arrow function expressions. It allows you to set a global limit, and to override this global limit for each of the types (definitions and expressions).
 
 ## Rule Details
 
-This rule aims to...
+By design, this plugin's rules don't have pre-set defaults. So, you've to configure this rule as described here in order to use it. Noting that all the options are used as keys in a single config object (no arrays or nested objects).
+
+### Options
+
+Here are the available options for this rule:
+
+- `global`: accepts an integer indicating the max number of parameters used in a function definition or expression. This applies to all types unless overridden for a specific type
+
+- `funcDefinition`: accepts an integer indicating the max number of parameters used in a function definition. This overrides the global limit
+
+- `funcExpression`: accepts an integer indicating the max number of parameters used in a function expression. This overrides the global limit
+
+- `arrowFuncExpression`: accepts an integer indicating the max number of parameters used in an arrow function expression. This overrides the global limit
+
+If you have a need to set the value of an option to `0`, it is a valid limit that's supported by this rule.
+
+#### Example (A)
+
+With a config like:
+
+```json
+{
+  "rules": {
+    "func-params-args/func-params": [
+      "warn",
+      {
+        "global": 3,
+        "arrowFuncExpression": 4
+      }
+    ]
+  }
+}
+```
 
 Examples of **incorrect** code for this rule:
 
 ```js
-// fill me in
+function foo(param1, param2, param3, param4) {}
+
+a = function (param1, param2, param3, param4) {};
+
+b = (param1, param2, param3, param4, param5) => {};
+
+c.reduce((param1, param2, param3, param4, param5) => {});
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-// fill me in
+function foo(param1, param2, param3) {}
+
+a = function (param1, param2, param3) {};
+
+b = (param1, param2, param3, param4) => {};
+
+c.reduce((param1, param2, param3, param4) => {});
+
+function foo(param1) {}
+
+a = function (param1, param2) {};
+
+b = () => {};
+
+c.reduce((param1, param2, param3) => {});
 ```
 
-### Options
+#### Example (B)
 
-If there are any options, describe them here. Otherwise, delete this section.
+With a config like:
 
-## When Not To Use It
+```json
+{
+  "rules": {
+    "func-params-args/func-params": [
+      "warn",
+      {
+        "funcDefinition": 1,
+        "funcExpression": 2
+      }
+    ]
+  }
+}
+```
 
-Give a short description of when it would be appropriate to turn off this rule.
+Examples of **incorrect** code for this rule:
 
-## Further Reading
+```js
+function foo(param1, param2) {}
 
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+a = function (param1, param2, param3) {};
+```
+
+Examples of **correct** code for this rule:
+
+```js
+function foo(param1) {}
+
+a = function (param1, param2) {};
+
+// No restrictions below on arrow function expressions
+// since the 'global' option is not configured
+
+b = (param1, param2, param3, param4, param5) => {};
+
+c = () => {};
+
+c.reduce((param1, param2, param3, param4) => {});
+```
