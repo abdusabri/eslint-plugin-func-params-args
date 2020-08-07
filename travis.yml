@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - 14
+  - 12
+  - 10
+  - 8
+  - 6
+
+before_script:
+  - npm prune
+
+script:
+  - npm run coverage
+  - npm run build
+
+after_success:
+  - npm run coveralls

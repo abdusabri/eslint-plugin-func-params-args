@@ -30,7 +30,8 @@
   "scripts": {
     "test": "mocha tests --recursive",
     "build": "rimraf dist && minify lib -d dist",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm run test",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "requireindex": "~1.1.0"
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "babel-minify": "^0.5.1",
+    "coveralls": "^3.1.0",
     "eslint": "^4 || ^5 || ^6 || ^7.1.0",
     "mocha": "^7.2.0",
     "nyc": "^15.1.0",
