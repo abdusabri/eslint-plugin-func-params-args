@@ -4,6 +4,8 @@ Limit the number of function parameters and arguments with ease and flexibility!
 
 This plugin intends to give you control over how many parameters are used in function definitions (declarations), function expressions, and arrow function expressions. In addition to this, you can also set limits on how many arguments can be used when calling functions, where you can set a global limit, and have even finer control by providing limits for specific function calls (set by configuring/providing the name of a function).
 
+![Travis (.org) branch](https://img.shields.io/travis/abdusabri/eslint-plugin-func-params-args/master?style=flat-square) ![Coveralls github branch](https://img.shields.io/coveralls/github/abdusabri/eslint-plugin-func-params-args/master?style=flat-square)
+
 ## Table of contents
 
 - [Why](#why)
@@ -184,3 +186,5 @@ This work wouldn't have been possible without the power of open source and peopl
 - This course [Creating an Open Source JavaScript Library on Github](https://frontendmasters.com/courses/open-source/), and its associated [GitHub repo](https://github.com/kentcdodds/starwars-names)
 
 - This course [Code Transformation and Linting with ASTs](https://frontendmasters.com/courses/linting-asts/)
+
+- Badges from [shields.io](https://shields.io/)
