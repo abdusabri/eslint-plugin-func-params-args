@@ -1,0 +1,13 @@
+node_modules
+
+package-lock.json
+
+.vscode
+
+dist
+
+*.log
+
+coverage
+
+.nyc_output

@@ -28,6 +28,8 @@
   },
   "main": "dist/index.js",
   "scripts": {
+    "prettier:fix": "prettier --write *.{js,json,md}",
+    "prettier:check": "prettier --check *.{js,json,md}",
     "test:unit": "mocha tests --recursive",
     "test": "nyc mocha tests --recursive",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
@@ -45,8 +47,11 @@
     "babel-minify": "^0.5.1",
     "coveralls": "^3.1.0",
     "eslint": "^4 || ^5 || ^6 || ^7.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "mocha": "^7.2.0",
     "nyc": "^15.1.0",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2"
   },
   "files": [
@@ -54,5 +59,13 @@
     "LICENSE",
     "docs",
     "dist"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,md}": "prettier --check"
+  }
 }
