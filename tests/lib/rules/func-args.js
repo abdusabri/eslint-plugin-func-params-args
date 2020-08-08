@@ -2,14 +2,14 @@
  * @fileoverview Tests for func-args rule
  * @author Abdulrahman (Abdu) Assabri
  */
-"use strict";
+'use strict';
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/func-args"),
-  RuleTester = require("eslint").RuleTester;
+var rule = require('../../../lib/rules/func-args'),
+  RuleTester = require('eslint').RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
@@ -18,7 +18,7 @@ var rule = require("../../../lib/rules/func-args"),
 const options = [{ foo: 3, bar: 2, global: 1 }];
 
 var ruleTester = new RuleTester();
-ruleTester.run("func-args", rule, {
+ruleTester.run('func-args', rule, {
   valid: [
     "foo('arg1');",
     "a.foo('arg1');",
@@ -45,7 +45,7 @@ ruleTester.run("func-args", rule, {
       }))
     )
     .concat(
-      ["baz('arg1', arg2);", "a.baz('arg1', arg2);", "foo();", "a.foo();"].map(
+      ["baz('arg1', arg2);", "a.baz('arg1', arg2);", 'foo();', 'a.foo();'].map(
         (code) => ({
           code,
           options: [{ foo: 0, global: 2 }],
@@ -63,9 +63,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "foo has been called with too many arguments (4). Maximum allowed is (3).",
+            'foo has been called with too many arguments (4). Maximum allowed is (3).',
         },
       ],
     },
@@ -74,9 +74,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "foo has been called with too many arguments (4). Maximum allowed is (3).",
+            'foo has been called with too many arguments (4). Maximum allowed is (3).',
         },
       ],
     },
@@ -85,9 +85,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "foo has been called with too many arguments (5). Maximum allowed is (3).",
+            'foo has been called with too many arguments (5). Maximum allowed is (3).',
         },
       ],
     },
@@ -96,9 +96,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "foo has been called with too many arguments (5). Maximum allowed is (3).",
+            'foo has been called with too many arguments (5). Maximum allowed is (3).',
         },
       ],
     },
@@ -107,9 +107,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "bar has been called with too many arguments (3). Maximum allowed is (2).",
+            'bar has been called with too many arguments (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -118,9 +118,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "bar has been called with too many arguments (3). Maximum allowed is (2).",
+            'bar has been called with too many arguments (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -129,9 +129,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "bar has been called with too many arguments (4). Maximum allowed is (2).",
+            'bar has been called with too many arguments (4). Maximum allowed is (2).',
         },
       ],
     },
@@ -140,9 +140,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "bar has been called with too many arguments (4). Maximum allowed is (2).",
+            'bar has been called with too many arguments (4). Maximum allowed is (2).',
         },
       ],
     },
@@ -151,9 +151,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "baz has been called with too many arguments (2). Maximum allowed is (1).",
+            'baz has been called with too many arguments (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -162,9 +162,9 @@ ruleTester.run("func-args", rule, {
       options,
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "baz has been called with too many arguments (2). Maximum allowed is (1).",
+            'baz has been called with too many arguments (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -173,9 +173,9 @@ ruleTester.run("func-args", rule, {
       options: [{ foo: 0, global: 2 }],
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "baz has been called with too many arguments (3). Maximum allowed is (2).",
+            'baz has been called with too many arguments (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -184,9 +184,9 @@ ruleTester.run("func-args", rule, {
       options: [{ foo: 0, global: 2 }],
       errors: [
         {
-          type: "CallExpression",
+          type: 'CallExpression',
           message:
-            "foo has been called with too many arguments (1). Maximum allowed is (0).",
+            'foo has been called with too many arguments (1). Maximum allowed is (0).',
         },
       ],
     },

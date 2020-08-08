@@ -28,8 +28,8 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "prettier:fix": "prettier --write *.{js,json,md}",
-    "prettier:check": "prettier --check *.{js,json,md}",
+    "prettier:fix": "prettier --write **/*.{js,json,md}",
+    "prettier:check": "prettier --check **/*.{js,json,md}",
     "test:unit": "mocha tests --recursive",
     "test": "nyc mocha tests --recursive",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",

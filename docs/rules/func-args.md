@@ -38,35 +38,35 @@ With a config like:
 Examples of **incorrect** code for this rule:
 
 ```js
-foo("arg1", "arg2", arg3, arg4);
-a.foo("arg1", "arg2", arg3, arg4);
+foo('arg1', 'arg2', arg3, arg4);
+a.foo('arg1', 'arg2', arg3, arg4);
 
-bar("arg1", "arg2", arg3);
-b.bar("arg1", "arg2", arg3);
+bar('arg1', 'arg2', arg3);
+b.bar('arg1', 'arg2', arg3);
 
-baz("arg1", arg2);
-b.baz("arg1", arg2);
+baz('arg1', arg2);
+b.baz('arg1', arg2);
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-foo("arg1", "arg2", arg3);
-foo("arg1", "arg2");
-foo("arg1");
-a.foo("arg1", "arg2", arg3);
-a.foo("arg1", "arg2");
-a.foo("arg1");
+foo('arg1', 'arg2', arg3);
+foo('arg1', 'arg2');
+foo('arg1');
+a.foo('arg1', 'arg2', arg3);
+a.foo('arg1', 'arg2');
+a.foo('arg1');
 
-bar("arg1", arg2);
-bar("arg1");
-b.bar("arg1", arg2);
-b.bar("arg1");
+bar('arg1', arg2);
+bar('arg1');
+b.bar('arg1', arg2);
+b.bar('arg1');
 
 baz();
 a.baz();
-baz("arg1");
-b.baz("arg1");
+baz('arg1');
+b.baz('arg1');
 ```
 
 #### Example (B)
@@ -89,22 +89,22 @@ With a config like:
 Examples of **incorrect** code for this rule:
 
 ```js
-foo("arg1", "arg2", arg3);
-a.foo("arg1", "arg2", arg3);
+foo('arg1', 'arg2', arg3);
+a.foo('arg1', 'arg2', arg3);
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-foo("arg1", "arg2");
-foo("arg1");
+foo('arg1', 'arg2');
+foo('arg1');
 foo();
-a.b.foo("arg1", "arg2");
-a.b.c.foo("arg1");
+a.b.foo('arg1', 'arg2');
+a.b.c.foo('arg1');
 a.b.foo();
 
-bar("arg1", "arg2", arg3, arg4);
-a.bar("arg1", "arg2", arg3, arg4);
+bar('arg1', 'arg2', arg3, arg4);
+a.bar('arg1', 'arg2', arg3, arg4);
 
 // whatever else function calls
 

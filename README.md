@@ -90,9 +90,9 @@ Or (`yml`)
 ```yml
 rules:
   func-params-args/func-args:
-    - "warn"
-    - "global": 3
-      "$emit": 2
+    - 'warn'
+    - 'global': 3
+      '$emit': 2
 ```
 
 As shown in the example above, the configuration approach for this plugin's rules uses a simple object structure (no arrays or nested objects), where keys like `$emit` are the options, and the value of a given key is the limit (like `2`). So, in the example above, it means that any calls to `$emit` function should have no more than `2` arguments, and the global limit for any other function call is `3`.
