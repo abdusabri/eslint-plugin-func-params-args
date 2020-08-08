@@ -4,14 +4,14 @@ node_js:
   - 14
   - 12
   - 10
-  - 8
-  - 6
 
 before_script:
   - npm prune
 
 script:
-  - npm run coverage
+  - npm run test
+  - npm run cover
+  - npm run check-coverage
   - npm run build
 
 after_success:

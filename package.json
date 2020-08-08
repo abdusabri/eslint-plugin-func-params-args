@@ -24,16 +24,18 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6.17.1"
+    "node": ">=10"
   },
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha tests --recursive",
-    "build": "rimraf dist && minify lib -d dist",
-    "coverage": "nyc npm run test",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettier:fix": "prettier --write *.{js,json,md}",
-    "prettier:check": "prettier --check"
+    "prettier:check": "prettier --check",
+    "test:unit": "mocha tests --recursive",
+    "test": "nyc mocha tests --recursive",
+    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "cover": "nyc report --reporter=lcov",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "rimraf dist && minify lib -d dist"
   },
   "dependencies": {
     "requireindex": "~1.1.0"
