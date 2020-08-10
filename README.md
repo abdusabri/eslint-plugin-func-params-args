@@ -142,6 +142,8 @@ In general, all feedback is welcome, and I would love to get more ideas and cont
 
 - Currently, in `func-params` rule, when there is an error reported, in addition to the code location (file and line number), an error message like `function has too many params (3). Maximum allowed is (2).` is reported. An improvement would be to report the name of the function (or the variable name in the case of a function expression) in the message instead of the generic `function`. For example, a message like `function has too many params...` could be `handleSubmit has too many params...` instead
 
+- Consider adding options for pattern matching. Maybe as a start, support `startsWith` and `endsWith` options. Could be useful if you use or have Node-style function names that end with a specific pattern like `[whatever]Sync` or `[whatever]Async`
+
 - Adopt the [all-contributors](https://github.com/all-contributors/all-contributors) specification for recognizing contributors
 
 ## Contributing
