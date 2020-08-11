@@ -157,7 +157,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -168,7 +169,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -178,7 +180,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -189,7 +192,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -199,7 +203,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (3). Maximum allowed is (2).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -210,7 +215,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -220,7 +226,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -231,7 +238,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -241,7 +249,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -252,7 +261,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -262,7 +272,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (3). Maximum allowed is (2).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -273,7 +284,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -283,7 +295,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -294,7 +307,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (3). Maximum allowed is (2).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -304,7 +318,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -315,7 +330,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (3). Maximum allowed is (2).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -332,7 +348,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (3). Maximum allowed is (2).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -350,7 +367,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (5). Maximum allowed is (4).',
+          message:
+            'function has too many parameters (5). Maximum allowed is (4).',
         },
       ],
     },
@@ -367,7 +385,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (4). Maximum allowed is (3).',
+          message:
+            'function has too many parameters (4). Maximum allowed is (3).',
         },
       ],
     },
@@ -385,7 +404,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
-          message: 'function has too many params (5). Maximum allowed is (4).',
+          message:
+            'function has too many parameters (5). Maximum allowed is (4).',
         },
       ],
     },
@@ -400,7 +420,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -415,7 +436,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (3). Maximum allowed is (2).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -429,7 +451,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (1). Maximum allowed is (0).',
+          message:
+            'function has too many parameters (1). Maximum allowed is (0).',
         },
       ],
     },
@@ -444,7 +467,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionDeclaration',
-          message: 'function has too many params (2). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -459,7 +483,8 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
-          message: 'function has too many params (3). Maximum allowed is (1).',
+          message:
+            'function has too many parameters (3). Maximum allowed is (1).',
         },
       ],
     },

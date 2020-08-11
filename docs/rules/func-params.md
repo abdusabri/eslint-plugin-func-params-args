@@ -22,6 +22,8 @@ If you have a need to set the value of an option to `0`, it is a valid limit tha
 
 If you want to disable this rule (removing all restrictions) for any of the options, you can set its value to `-1`. For example, setting an option like `"arrowFuncExpression": -1` in the config, allows you to use arrow functions with any number of parameters (basically from 0 to an unlimited number of parameters). This overrides the global limit.
 
+**Error message example:** `function has too many parameters (3). Maximum allowed is (1).`
+
 #### Example (A)
 
 With a config like:
