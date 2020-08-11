@@ -26,7 +26,7 @@
   "engines": {
     "node": ">=10"
   },
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prettier:fix": "prettier --write **/*.{js,json,md}",
     "prettier:check": "prettier --check **/*.{js,json,md}",
