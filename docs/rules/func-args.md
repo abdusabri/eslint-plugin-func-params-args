@@ -16,6 +16,8 @@ Here are the available options for this rule:
 
 If you have a need to set the value of an option to `0`, it is a valid limit that's supported by this rule.
 
+**_Note:_** _There is currently a known issue that is under investigation, where using `[functionName]` option and setting the value/limit to 0 doesn't take effect. Until the issue is resolved, the actual minimum value is `1` (instead `0`) when `[functionName]` is used._
+
 #### Example (A)
 
 With a config like:
