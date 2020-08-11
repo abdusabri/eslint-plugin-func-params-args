@@ -130,6 +130,24 @@ ruleTester.run('func-params', rule, {
         ],
         parserOptions,
       }))
+    )
+    .concat(
+      [
+        'function foo(param1) {}',
+        'a = function () {};',
+        'b = (param1, param2, param3) => {};',
+        'c = () => {};',
+        'c.reduce((param1, param2, param3, param4) => {});',
+      ].map((code) => ({
+        code,
+        options: [
+          {
+            global: 1,
+            arrowFuncExpression: -1,
+          },
+        ],
+        parserOptions,
+      }))
     ),
 
   invalid: [
@@ -412,6 +430,36 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message: 'function has too many params (1). Maximum allowed is (0).',
+        },
+      ],
+    },
+    {
+      code: 'function foo(param1, param2) {}',
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'FunctionDeclaration',
+          message: 'function has too many params (2). Maximum allowed is (1).',
+        },
+      ],
+    },
+    {
+      code: 'a = function (param1, param2, param3) {};',
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'FunctionExpression',
+          message: 'function has too many params (3). Maximum allowed is (1).',
         },
       ],
     },

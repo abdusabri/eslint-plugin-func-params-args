@@ -52,6 +52,21 @@ ruleTester.run('func-args', rule, {
         })
       )
     )
+    .concat(
+      [
+        "baz('arg1', arg2);",
+        "a.baz('arg1', arg2);",
+        'foo();',
+        'a.foo();',
+        'foo(arg1);',
+        "foo(arg1, 'arg2');",
+        "foo(arg1, 'arg2', arg3);",
+        "foo(arg1, 'arg2', arg3, 'arg4');",
+      ].map((code) => ({
+        code,
+        options: [{ foo: -1, global: 2 }],
+      }))
+    )
     .concat([
       "foo('arg1','arg2','arg3','arg4','arg5');",
       "a.foo('arg1','arg2','arg3','arg4','arg5');",
@@ -187,6 +202,28 @@ ruleTester.run('func-args', rule, {
           type: 'CallExpression',
           message:
             'foo has been called with too many arguments (1). Maximum allowed is (0).',
+        },
+      ],
+    },
+    {
+      code: "bar('arg1', arg2, 'arg3');",
+      options: [{ foo: -1, global: 2 }],
+      errors: [
+        {
+          type: 'CallExpression',
+          message:
+            'bar has been called with too many arguments (3). Maximum allowed is (2).',
+        },
+      ],
+    },
+    {
+      code: "a.baz('arg1', arg2, 'arg3', arg4);",
+      options: [{ foo: -1, global: 2 }],
+      errors: [
+        {
+          type: 'CallExpression',
+          message:
+            'baz has been called with too many arguments (4). Maximum allowed is (2).',
         },
       ],
     },
