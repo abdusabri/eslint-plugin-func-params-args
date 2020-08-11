@@ -16,6 +16,8 @@ Here are the available options for this rule:
 
 If you have a need to set the value of an option to `0`, it is a valid limit that's supported by this rule.
 
+If you want to disable this rule (removing all restrictions) for any of the options, you can set its value to `-1`. For example, adding an option like `"baz": -1` in the config, allows you to call `baz` with any number of arguments (basically from 0 to an unlimited number of argument). This overrides the global limit.
+
 #### Example (A)
 
 With a config like:
