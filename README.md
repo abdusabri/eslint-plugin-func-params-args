@@ -148,7 +148,42 @@ In general, all feedback is welcome, and I would love to get more ideas and cont
 
 ## Contributing
 
-Content to be added
+If you want to report a bug or ask questions, please feel free to open a new issue.
+
+All contributions are welcome and appreciated. If you want to help out, please follow the guidelines outlined below. The objective is to ensure that your time and effort are will spent, and to avoid a situation where you might spend time on something that someone else is already working on. Contributors time is valuable, and I hope these guidelines ensure that we can make the best out of it 🙏
+
+### General guidelines
+
+- Working on your first Pull Request? You can learn how from this free series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github) - Thanks to [Kent C. Dodds](https://github.com/kentcdodds)
+
+- Please follow [this guide for your commit messages](https://chris.beams.io/posts/git-commit/). Though the recommended length of the subject line is 50, it is fine to go up to 72 if you need to
+
+- For documentation improvements or fixing typos, feel free to open a PR without an existing issue. Otherwise, please follow the development guidelines outlined below
+
+### Development guidelines
+
+- If you are new to ESLint plugin development, the resources in [Inspiration and credits](#inspiration-and-credits) should help you get started
+
+- Check open issues to see if an existing one is already addressing what you want to contribute/help with, or if there is one that is interesting for you to work on. If you want to work on (grab) an existing issue, please ensure that it has the label `up for grabs`, and comment on it to signal your interest. I will then assign the issue to you and add the `assigned` label to it (will remove `up for grabs` as well). [Here is a link to open issues that are up for grabs](https://github.com/abdusabri/eslint-plugin-func-params-args/labels/up%20for%20grabs)
+
+- If you don't find an existing issue addressing what you want to contribute/help with, create a new issue and include a short description
+
+- If the changes you are working on require documentation updates, please update the docs accordingly
+
+- When you are ready to open a PR (all pull requests should be opened against master branch):
+
+  - Add a summary explaining your changes
+  - Add `Fixes #[issue number]` or `Closes #[issue number]` in the PR description
+
+- Here is [a nice article](https://medium.engineering/the-code-review-mindset-3280a4af0a89) about code reviews that I found helpful. Knew about it from [Automattic's Calypso contributing guide](https://github.com/Automattic/wp-calypso/blob/master/docs/CONTRIBUTING.md)
+
+#### Notes
+
+- Please run `npm install` or `yarn` to ensure that the required dev dependencies are properly installed
+
+- The target for test coverage is `100%`. If not met, a PR will fail on CI (Travis Continuous Integration). You can run `npm run test` locally as well.
+
+- The project uses Prettier for code formatting and style, and there is a pre-commit hook that auto-fixes any code style issues. This is also checked and will fail on CI if there are issues reported by Prettier.
 
 ## Code of conduct
 
