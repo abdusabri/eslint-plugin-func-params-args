@@ -45,9 +45,9 @@ npm install eslint --save-dev
 Next, install `eslint-plugin-func-params-args`:
 
 ```shell
-npm install eslint-plugin-func-max-args --save-dev
+npm install eslint-plugin-func-params-args --save-dev
 
-# or yarn add eslint-plugin-func-max-args --dev
+# or yarn add eslint-plugin-func-params-args --dev
 ```
 
 ## General usage notes
