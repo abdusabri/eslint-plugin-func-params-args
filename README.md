@@ -181,9 +181,9 @@ All contributions are welcome and appreciated. If you want to help out, please f
 
 - Please run `npm install` or `yarn` to ensure that the required dev dependencies are properly installed
 
-- The target for test coverage is `100%`. If not met, a PR will fail on CI (Travis Continuous Integration). You can run `npm run test` locally as well.
+- The target for test coverage is `100%`. If not met, a PR will fail on CI (Travis Continuous Integration). You can run `npm run test` locally as well
 
-- The project uses Prettier for code formatting and style, and there is a pre-commit hook that auto-fixes any code style issues. This is also checked and will fail on CI if there are issues reported by Prettier.
+- The project uses Prettier for code formatting and style, and there is a pre-commit hook that auto-fixes any code style issues. This is also checked and will fail on CI if there are issues reported by Prettier
 
 ## Code of conduct
 
