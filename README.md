@@ -14,11 +14,19 @@ This plugin intends to give you control over how many parameters are used in fun
 
 - [General usage notes](#general-usage-notes)
 
+  - [No defaults](#no-defaults)
+
+  - [Non-JavaScript files](#non-javascript-files)
+
 - [Available rules](#available-rules)
 
 - [What is next](#what-is-next)
 
 - [Contributing](#contributing)
+
+  - [General guidelines](#general-guidelines)
+
+  - [Development guidelines](#general-guidelines)
 
 - [Code of conduct](#code-of-conduct)
 
@@ -148,7 +156,7 @@ In general, all feedback is welcome, and I would love to get more ideas and cont
 
 ## Contributing
 
-If you want to report a bug or ask questions, please feel free to open a new issue.
+If you want to report a bug, request a feature, or ask questions, please feel free to open a new issue.
 
 All contributions are welcome and appreciated. If you want to help out, please follow the guidelines outlined below. The objective is to ensure that your time and effort are will spent, and to avoid a situation where you might spend time on something that someone else is already working on. Contributors time is valuable, and I hope these guidelines ensure that we can make the best out of it 🙏
 
@@ -159,6 +167,12 @@ All contributions are welcome and appreciated. If you want to help out, please f
 - Please follow [this guide for your commit messages](https://chris.beams.io/posts/git-commit/). Though the recommended length of the subject line is 50, it is fine to go up to 72 if you need to
 
 - For documentation improvements or fixing typos, feel free to open a PR without an existing issue. Otherwise, please follow the development guidelines outlined below
+
+#### Documentation notes
+
+- You may sometimes find open issues related to documentation. Such issues will have `documentation` label
+
+- For minor documentation updates or fixing typos, it is usually fine to do so directly on GitHub website. For large documentation updates, it is recommended to clone the repo and ensure that the project dependencies are installed (by running `npm install` or `yarn`). This is because [Prettier](https://prettier.io/) is used to ensure consistent style/formatting in the docs (all `.md` files), and having the dependencies installed will automatically fix style/formatting issues upon committing
 
 ### Development guidelines
 
@@ -173,11 +187,12 @@ All contributions are welcome and appreciated. If you want to help out, please f
 - When you are ready to open a PR (all pull requests should be opened against master branch):
 
   - Add a summary explaining your changes
+
   - Add `Fixes #[issue number]` or `Closes #[issue number]` in the PR description
 
 - Here is [a nice article](https://medium.engineering/the-code-review-mindset-3280a4af0a89) about code reviews that I found helpful. Knew about it from [Automattic's Calypso contributing guide](https://github.com/Automattic/wp-calypso/blob/master/docs/CONTRIBUTING.md)
 
-#### Notes
+#### Development notes
 
 - Please run `npm install` or `yarn` to ensure that the required dev dependencies are properly installed
 
