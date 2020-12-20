@@ -4,7 +4,7 @@ Limit the number of function parameters and arguments with ease and flexibility!
 
 This plugin intends to give you control over how many parameters are used in function definitions (declarations), function expressions, and arrow function expressions. In addition to this, you can also set limits on how many arguments can be used when calling functions, where you can set a global limit, and have even finer control by providing limits for specific function calls (set by configuring/providing the name of a function).
 
-[![Travis (.org) branch](https://img.shields.io/travis/abdusabri/eslint-plugin-func-params-args/master?logo=travis&style=flat-square)](https://travis-ci.org/github/abdusabri/eslint-plugin-func-params-args) [![Coveralls github branch](https://img.shields.io/coveralls/github/abdusabri/eslint-plugin-func-params-args/master?logo=coveralls&style=flat-square)](https://coveralls.io/github/abdusabri/eslint-plugin-func-params-args) ![Depfu](https://img.shields.io/depfu/abdusabri/eslint-plugin-func-params-args?style=flat-square)
+[![Travis (.org) branch](https://img.shields.io/travis/abdusabri/eslint-plugin-func-params-args/master?logo=travis&style=flat-square)](https://travis-ci.com/github/abdusabri/eslint-plugin-func-params-args) [![Coveralls github branch](https://img.shields.io/coveralls/github/abdusabri/eslint-plugin-func-params-args/master?logo=coveralls&style=flat-square)](https://coveralls.io/github/abdusabri/eslint-plugin-func-params-args) ![Depfu](https://img.shields.io/depfu/abdusabri/eslint-plugin-func-params-args?style=flat-square)
 
 ## Table of contents
 
