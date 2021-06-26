@@ -48,7 +48,7 @@
     "coveralls": "^3.1.0",
     "eslint": "^7.25.0",
     "husky": "^6.0.0",
-    "lint-staged": "^10.5.4",
+    "lint-staged": "^11.0.0",
     "mocha": "^8.3.2",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1",
