@@ -18,6 +18,8 @@ Here are the available options for this rule:
 
 - `arrowFuncExpression`: accepts an integer indicating the max number of parameters used in an arrow function expression. This overrides the global limit
 
+- `funcTypeAnnotation`: accepts an integer indicating the max number of parameters used in a TypeScript function type annotation. This overrides the global limit
+
 If you have a need to set the value of an option to `0`, it is a valid limit that's supported by this rule.
 
 If you want to disable this rule (removing all restrictions) for any of the options, you can set its value to `-1`. For example, setting an option like `"arrowFuncExpression": -1` in the config, allows you to use arrow functions with any number of parameters (basically from 0 to an unlimited number of parameters). This overrides the global limit.
@@ -44,7 +46,7 @@ With a config like:
 
 Examples of **incorrect** code for this rule:
 
-```js
+```ts
 function foo(param1, param2, param3, param4) {}
 
 a = function (param1, param2, param3, param4) {};
@@ -52,11 +54,29 @@ a = function (param1, param2, param3, param4) {};
 b = (param1, param2, param3, param4, param5) => {};
 
 c.reduce((param1, param2, param3, param4, param5) => {});
+
+interface IFoo {
+  onBar: (
+    param1: string,
+    param2: string,
+    param3: string,
+    param4: string
+  ) => void;
+}
+
+type FooType = {
+  onBar: (
+    param1: number,
+    param2: number,
+    param3: number,
+    param4: number
+  ) => void;
+};
 ```
 
 Examples of **correct** code for this rule:
 
-```js
+```ts
 function foo(param1, param2, param3) {}
 
 a = function (param1, param2, param3) {};
@@ -72,6 +92,14 @@ a = function (param1, param2) {};
 b = () => {};
 
 c.reduce((param1, param2, param3) => {});
+
+interface IFoo {
+  onBar: (param1: string, param2: string, param3: string) => void;
+}
+
+type FooType = {
+  onBar: (param1: number, param2: number, param3: number) => void;
+};
 ```
 
 #### Example (B)

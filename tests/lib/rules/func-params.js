@@ -8,6 +8,8 @@
 // Requirements
 //------------------------------------------------------------------------------
 
+var resolve = require('path').resolve;
+
 var rule = require('../../../lib/rules/func-params'),
   RuleTester = require('eslint').RuleTester;
 
@@ -17,13 +19,21 @@ var rule = require('../../../lib/rules/func-params'),
 
 const parserOptions = { ecmaVersion: 6 };
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({
+  parser: resolve('./node_modules/@typescript-eslint/parser'),
+});
 ruleTester.run('func-params', rule, {
   valid: [
     'function test(param1) {}',
     'a = (param1) => {};',
     'b = function(param1) {};',
     'c.forEach((param1) => {});',
+    `interface IFoo {
+      onBar: (param1:string) => void;
+    }`,
+    `type FooType = {
+      onBar: (param1:number) => void;
+    }`,
   ]
     .map((code) => ({
       code,
@@ -36,6 +46,12 @@ ruleTester.run('func-params', rule, {
         'a = (param1, param2, param3, param4, param5) => {};',
         'b = function(param1, param2, param3, param4, param5) {};',
         'c.forEach((param1, param2, param3, param4, param5) => {});',
+        `interface IFoo {
+          onBar: (param1:string, param2:string, param3:string, param4:string, param5:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
+        }`,
       ].map((code) => ({
         code,
         parserOptions,
@@ -47,6 +63,12 @@ ruleTester.run('func-params', rule, {
         'a = (param1) => {};',
         'b = function(param1) {};',
         'c.forEach((param1) => {});',
+        `interface IFoo {
+          onBar: (param1:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number) => void;
+        }`,
       ].map((code) => ({
         code,
         options: [{ global: 1, funcDefinition: 2 }],
@@ -59,6 +81,12 @@ ruleTester.run('func-params', rule, {
         'a = (param1) => {};',
         'b = function(param1, param2) {};',
         'c.forEach((param1) => {});',
+        `interface IFoo {
+          onBar: (param1:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number) => void;
+        }`,
       ].map((code) => ({
         code,
         options: [{ global: 1, funcExpression: 2 }],
@@ -71,9 +99,33 @@ ruleTester.run('func-params', rule, {
         'a = (param1, param2) => {};',
         'b = function(param1) {};',
         'c.forEach((param1, param2) => {});',
+        `interface IFoo {
+          onBar: (param1:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number) => void;
+        }`,
       ].map((code) => ({
         code,
         options: [{ global: 1, arrowFuncExpression: 2 }],
+        parserOptions,
+      }))
+    )
+    .concat(
+      [
+        'function test(param1) {}',
+        'a = (param1) => {};',
+        'b = function(param1) {};',
+        'c.forEach((param1) => {});',
+        `interface IFoo {
+          onBar: (param1:string, param2:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number, param2:number) => void;
+        }`,
+      ].map((code) => ({
+        code,
+        options: [{ global: 1, funcTypeAnnotation: 2 }],
         parserOptions,
       }))
     )
@@ -83,6 +135,12 @@ ruleTester.run('func-params', rule, {
         'a = (param1, param2, param3, param4) => {};',
         'b = function(param1, param2, param3) {};',
         'c.reduce((param1, param2, param3, param4) => {});',
+        `interface IFoo {
+          onBar: () => void;
+        }`,
+        `type FooType = {
+          onBar: () => void;
+        }`,
       ].map((code) => ({
         code,
         options: [
@@ -91,6 +149,7 @@ ruleTester.run('func-params', rule, {
             funcDefinition: 2,
             funcExpression: 3,
             arrowFuncExpression: 4,
+            funcTypeAnnotation: 0,
           },
         ],
         parserOptions,
@@ -103,6 +162,12 @@ ruleTester.run('func-params', rule, {
         'b = (param1, param2, param3, param4, param5) => {};',
         'c = () => {};',
         'c.reduce((param1, param2, param3, param4) => {});',
+        `interface IFoo {
+          onBar: (param1:string, param2:string, param3:string, param4:string, param5:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
+        }`,
       ].map((code) => ({
         code,
         options: [
@@ -121,6 +186,12 @@ ruleTester.run('func-params', rule, {
         'b = (param1, param2, param3) => {};',
         'c = () => {};',
         'c.reduce((param1, param2, param3, param4) => {});',
+        `interface IFoo {
+          onBar: (param1:string, param2:string, param3:string, param4:string, param5:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
+        }`,
       ].map((code) => ({
         code,
         options: [
@@ -138,12 +209,42 @@ ruleTester.run('func-params', rule, {
         'b = (param1, param2, param3) => {};',
         'c = () => {};',
         'c.reduce((param1, param2, param3, param4) => {});',
+        `interface IFoo {
+          onBar: (param1:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number) => void;
+        }`,
       ].map((code) => ({
         code,
         options: [
           {
             global: 1,
             arrowFuncExpression: -1,
+          },
+        ],
+        parserOptions,
+      }))
+    )
+    .concat(
+      [
+        'function foo(param1) {}',
+        'a = function () {};',
+        'b = (param1) => {};',
+        'c = () => {};',
+        'c.reduce((param1) => {});',
+        `interface IFoo {
+          onBar: (param1:string, param2:string, param3:string, param4:string, param5:string) => void;
+        }`,
+        `type FooType = {
+          onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
+        }`,
+      ].map((code) => ({
+        code,
+        options: [
+          {
+            global: 1,
+            funcTypeAnnotation: -1,
           },
         ],
         parserOptions,
@@ -192,6 +293,20 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'ArrowFunctionExpression',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
+        },
+      ],
+    },
+    {
+      code: `interface IFoo {
+        onBar: (param1:string, param1:string) => void;
+      }`,
+      options: [{ global: 1 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
           message:
             'function has too many parameters (2). Maximum allowed is (1).',
         },
@@ -290,6 +405,20 @@ ruleTester.run('func-params', rule, {
       ],
     },
     {
+      code: `interface IFoo {
+        onBar: (param1:string, param2:string) => void;
+      }`,
+      options: [{ global: 1, funcExpression: 2 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
+        },
+      ],
+    },
+    {
       code: 'function test(param1, param2) {}',
       options: [{ global: 1, arrowFuncExpression: 2 }],
       errors: [
@@ -336,6 +465,34 @@ ruleTester.run('func-params', rule, {
       ],
     },
     {
+      code: `interface IFoo {
+        onBar: (param1:string, param2:string) => void;
+      }`,
+      options: [{ global: 1, arrowFuncExpression: 2 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            'function has too many parameters (2). Maximum allowed is (1).',
+        },
+      ],
+    },
+    {
+      code: `interface IFoo {
+        onBar: (param1:string, param2:string, param3:string) => void;
+      }`,
+      options: [{ global: 1, funcTypeAnnotation: 2 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            'function has too many parameters (3). Maximum allowed is (2).',
+        },
+      ],
+    },
+    {
       code: 'function test(param1, param2, param3) {}',
       options: [
         {
@@ -343,6 +500,7 @@ ruleTester.run('func-params', rule, {
           funcDefinition: 2,
           funcExpression: 3,
           arrowFuncExpression: 4,
+          funcTypeAnnotation: 0,
         },
       ],
       errors: [
@@ -361,6 +519,7 @@ ruleTester.run('func-params', rule, {
           funcDefinition: 2,
           funcExpression: 3,
           arrowFuncExpression: 4,
+          funcTypeAnnotation: 0,
         },
       ],
       parserOptions,
@@ -380,6 +539,7 @@ ruleTester.run('func-params', rule, {
           funcDefinition: 2,
           funcExpression: 3,
           arrowFuncExpression: 4,
+          funcTypeAnnotation: 0,
         },
       ],
       errors: [
@@ -398,6 +558,7 @@ ruleTester.run('func-params', rule, {
           funcDefinition: 2,
           funcExpression: 3,
           arrowFuncExpression: 4,
+          funcTypeAnnotation: 0,
         },
       ],
       parserOptions,
@@ -406,6 +567,28 @@ ruleTester.run('func-params', rule, {
           type: 'ArrowFunctionExpression',
           message:
             'function has too many parameters (5). Maximum allowed is (4).',
+        },
+      ],
+    },
+    {
+      code: `interface IFoo {
+        onBar: (param1:string, param2:string) => void;
+      }`,
+      options: [
+        {
+          global: 1,
+          funcDefinition: 2,
+          funcExpression: 3,
+          arrowFuncExpression: 4,
+          funcTypeAnnotation: 0,
+        },
+      ],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            'function has too many parameters (2). Maximum allowed is (0).',
         },
       ],
     },
@@ -483,6 +666,24 @@ ruleTester.run('func-params', rule, {
       errors: [
         {
           type: 'FunctionExpression',
+          message:
+            'function has too many parameters (3). Maximum allowed is (1).',
+        },
+      ],
+    },
+    {
+      code: `interface IFoo {
+        onBar: (param1:string, param2:string, param3:string) => void;
+      }`,
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'TSFunctionType',
           message:
             'function has too many parameters (3). Maximum allowed is (1).',
         },
