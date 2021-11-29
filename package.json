@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "main": "dist/index.js",
   "scripts": {
@@ -41,7 +41,7 @@
     "requireindex": "~1.2.0"
   },
   "peerDependencies": {
-    "eslint": "^4 || ^5 || ^6 || ^7.1.0"
+    "eslint": "^4 || ^5 || ^6 || ^7.1.0 || ^8.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.4.0",
