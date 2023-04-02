@@ -6,7 +6,6 @@ node_js:
   - 18
   - 16
   - 14
-  - 12
 
 before_script:
   - npm prune
