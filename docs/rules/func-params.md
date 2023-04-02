@@ -24,7 +24,13 @@ If you have a need to set the value of an option to `0`, it is a valid limit tha
 
 If you want to disable this rule (removing all restrictions) for any of the options, you can set its value to `-1`. For example, setting an option like `"arrowFuncExpression": -1` in the config, allows you to use arrow functions with any number of parameters (basically from 0 to an unlimited number of parameters). This overrides the global limit.
 
-**Error message example:** `function has too many parameters (3). Maximum allowed is (1).`
+**Error message examples:**
+
+- `function 'foo' has too many parameters (3). Maximum allowed is (1).`
+- `arrow function 'b' has too many parameters (3). Maximum allowed is (1).`
+- `arrow function has too many parameters (3). Maximum allowed is (1).`
+- `function 'onBar' has too many parameters (3). Maximum allowed is (1).` [TS key in interface or object type]
+- `function 'onBarFn' has too many parameters (3). Maximum allowed is (1).` [TS function type alias]
 
 #### Example (A)
 
@@ -72,6 +78,13 @@ type FooType = {
     param4: number
   ) => void;
 };
+
+type onBarFn = (
+  param1: number,
+  param2: number,
+  param3: number,
+  param4: number
+) => void;
 ```
 
 Examples of **correct** code for this rule:
@@ -100,6 +113,8 @@ interface IFoo {
 type FooType = {
   onBar: (param1: number, param2: number, param3: number) => void;
 };
+
+type onBarFn = (param1: number, param2: number, param3: number) => void;
 ```
 
 #### Example (B)
