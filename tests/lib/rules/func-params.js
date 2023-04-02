@@ -640,6 +640,26 @@ ruleTester.run('func-params', rule, {
       ],
     },
     {
+      code: 'type onBarFn = (param1:string, param2:string) => void;',
+      options: [
+        {
+          global: 1,
+          funcDefinition: 2,
+          funcExpression: 3,
+          arrowFuncExpression: 4,
+          funcTypeAnnotation: 0,
+        },
+      ],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBarFn' has too many parameters (2). Maximum allowed is (0).",
+        },
+      ],
+    },
+    {
       code: 'function foo(param1, param2) {}',
       options: [
         {
