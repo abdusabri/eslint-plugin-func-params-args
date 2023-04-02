@@ -34,6 +34,7 @@ ruleTester.run('func-params', rule, {
     `type FooType = {
       onBar: (param1:number) => void;
     }`,
+    'type onBarFn = (param1:number) => void;',
   ]
     .map((code) => ({
       code,
@@ -52,6 +53,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
         }`,
+        'type onBarFn = (param1:number, param2:number, param3:number, param4:number, param5:number) => void;',
       ].map((code) => ({
         code,
         parserOptions,
@@ -69,6 +71,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number) => void;
         }`,
+        'type onBarFn = (param1:number) => void;',
       ].map((code) => ({
         code,
         options: [{ global: 1, funcDefinition: 2 }],
@@ -87,6 +90,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number) => void;
         }`,
+        'type onBarFn = (param1:number) => void;',
       ].map((code) => ({
         code,
         options: [{ global: 1, funcExpression: 2 }],
@@ -105,6 +109,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number) => void;
         }`,
+        'type onBarFn = (param1:number) => void;',
       ].map((code) => ({
         code,
         options: [{ global: 1, arrowFuncExpression: 2 }],
@@ -123,6 +128,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number, param2:number) => void;
         }`,
+        'type onBarFn = (param1:number, param2:number) => void;',
       ].map((code) => ({
         code,
         options: [{ global: 1, funcTypeAnnotation: 2 }],
@@ -141,6 +147,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: () => void;
         }`,
+        'type onBarFn = () => void;',
       ].map((code) => ({
         code,
         options: [
@@ -168,6 +175,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
         }`,
+        'type onBarFn = (param1:number, param2:number, param3:number, param4:number, param5:number) => void;',
       ].map((code) => ({
         code,
         options: [
@@ -192,6 +200,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
         }`,
+        'type onBarFn = (param1:number, param2:number, param3:number, param4:number, param5:number) => void;',
       ].map((code) => ({
         code,
         options: [
@@ -215,6 +224,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number) => void;
         }`,
+        'type onBarFn = (param1:number) => void;',
       ].map((code) => ({
         code,
         options: [
@@ -239,6 +249,7 @@ ruleTester.run('func-params', rule, {
         `type FooType = {
           onBar: (param1:number, param2:number, param3:number, param4:number, param5:number) => void;
         }`,
+        'type onBarFn = (param1:number, param2:number, param3:number, param4:number, param5:number) => void;',
       ].map((code) => ({
         code,
         options: [
@@ -259,7 +270,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'test' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -271,7 +282,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "arrow function 'a' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -282,7 +293,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'b' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -294,7 +305,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            'arrow function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -308,7 +319,19 @@ ruleTester.run('func-params', rule, {
         {
           type: 'TSFunctionType',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'onBar' has too many parameters (2). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: 'type onBarFn = (param1:string, param1:string) => void;',
+      options: [{ global: 1 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBarFn' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -319,7 +342,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            "function 'test' has too many parameters (3). Maximum allowed is (2).",
         },
       ],
     },
@@ -331,7 +354,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "arrow function 'a' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -342,7 +365,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'b' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -354,7 +377,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            'arrow function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -365,7 +388,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'test' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -377,7 +400,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "arrow function 'a' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -388,7 +411,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            "function 'b' has too many parameters (3). Maximum allowed is (2).",
         },
       ],
     },
@@ -400,7 +423,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            'arrow function has too many parameters (2). Maximum allowed is (1).',
         },
       ],
     },
@@ -414,7 +437,19 @@ ruleTester.run('func-params', rule, {
         {
           type: 'TSFunctionType',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'onBar' has too many parameters (2). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: 'type onBarFn = (param1:string, param2:string) => void;',
+      options: [{ global: 1, funcExpression: 2 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBarFn' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -425,7 +460,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'test' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -437,7 +472,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            "arrow function 'a' has too many parameters (3). Maximum allowed is (2).",
         },
       ],
     },
@@ -448,7 +483,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'b' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -460,7 +495,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            'arrow function has too many parameters (3). Maximum allowed is (2).',
         },
       ],
     },
@@ -474,7 +509,19 @@ ruleTester.run('func-params', rule, {
         {
           type: 'TSFunctionType',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'onBar' has too many parameters (2). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: 'type onBarFn = (param1:string, param2:string) => void;',
+      options: [{ global: 1, arrowFuncExpression: 2 }],
+      parserOptions,
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBarFn' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -488,7 +535,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'TSFunctionType',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            "function 'onBar' has too many parameters (3). Maximum allowed is (2).",
         },
       ],
     },
@@ -507,7 +554,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            "function 'test' has too many parameters (3). Maximum allowed is (2).",
         },
       ],
     },
@@ -527,7 +574,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (5). Maximum allowed is (4).',
+            "arrow function 'a' has too many parameters (5). Maximum allowed is (4).",
         },
       ],
     },
@@ -546,7 +593,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (4). Maximum allowed is (3).',
+            "function 'b' has too many parameters (4). Maximum allowed is (3).",
         },
       ],
     },
@@ -566,7 +613,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'ArrowFunctionExpression',
           message:
-            'function has too many parameters (5). Maximum allowed is (4).',
+            'arrow function has too many parameters (5). Maximum allowed is (4).',
         },
       ],
     },
@@ -588,7 +635,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'TSFunctionType',
           message:
-            'function has too many parameters (2). Maximum allowed is (0).',
+            "function 'onBar' has too many parameters (2). Maximum allowed is (0).",
         },
       ],
     },
@@ -604,7 +651,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'foo' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -620,7 +667,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (3). Maximum allowed is (2).',
+            "function 'a' has too many parameters (3). Maximum allowed is (2).",
         },
       ],
     },
@@ -635,7 +682,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (1). Maximum allowed is (0).',
+            "function 'a' has too many parameters (1). Maximum allowed is (0).",
         },
       ],
     },
@@ -651,7 +698,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionDeclaration',
           message:
-            'function has too many parameters (2). Maximum allowed is (1).',
+            "function 'foo' has too many parameters (2). Maximum allowed is (1).",
         },
       ],
     },
@@ -667,7 +714,7 @@ ruleTester.run('func-params', rule, {
         {
           type: 'FunctionExpression',
           message:
-            'function has too many parameters (3). Maximum allowed is (1).',
+            "function 'a' has too many parameters (3). Maximum allowed is (1).",
         },
       ],
     },
@@ -685,7 +732,43 @@ ruleTester.run('func-params', rule, {
         {
           type: 'TSFunctionType',
           message:
-            'function has too many parameters (3). Maximum allowed is (1).',
+            "function 'onBar' has too many parameters (3). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: `type IFoo = {
+        onBar: (param1:string, param2:string, param3:string) => void;
+      }`,
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBar' has too many parameters (3). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: `
+        type onBarFn = (param1:string, param2:string, param3:string) => void;
+      `,
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBarFn' has too many parameters (3). Maximum allowed is (1).",
         },
       ],
     },
