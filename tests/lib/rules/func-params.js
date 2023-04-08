@@ -775,6 +775,81 @@ ruleTester.run('func-params', rule, {
       ],
     },
     {
+      code: `type IFoo = {
+        nested1: {
+          nested2: {
+            onBarNested: (param1:string, param2:string, param3:string) => void;
+          }
+        }
+      }`,
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'onBarNested' has too many parameters (3). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: `
+        const func2: (param1:string, param2:string, param3:string) => void = (arg1, arg2, arg3, arg4) => {
+          // function body
+      };`,
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'TSFunctionType',
+          message:
+            "function 'func2' has too many parameters (3). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: `interface MyInterface {
+        myFunction(param1:string, param2:string, param3:string): void;
+      };`,
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'TSMethodSignature',
+          message:
+            "function 'myFunction' has too many parameters (3). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
+      code: 'a = async function (param1, param2, param3) {};',
+      options: [
+        {
+          global: 1,
+          arrowFuncExpression: -1,
+        },
+      ],
+      errors: [
+        {
+          type: 'FunctionExpression',
+          message:
+            "async function 'a' has too many parameters (3). Maximum allowed is (1).",
+        },
+      ],
+    },
+    {
       code: `
         type onBarFn = (param1:string, param2:string, param3:string) => void;
       `,

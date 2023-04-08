@@ -31,6 +31,7 @@ If you want to disable this rule (removing all restrictions) for any of the opti
 - `arrow function has too many parameters (3). Maximum allowed is (1).`
 - `function 'onBar' has too many parameters (3). Maximum allowed is (1).` [TS key in interface or object type]
 - `function 'onBarFn' has too many parameters (3). Maximum allowed is (1).` [TS function type alias]
+- `function 'myFunction' has too many parameters (3). Maximum allowed is (1).` [TS method signature]
 
 #### Example (A)
 
@@ -59,6 +60,8 @@ a = function (param1, param2, param3, param4) {};
 
 b = (param1, param2, param3, param4, param5) => {};
 
+c = async function (param1, param2, param3, param4) {};
+
 c.reduce((param1, param2, param3, param4, param5) => {});
 
 interface IFoo {
@@ -85,6 +88,22 @@ type onBarFn = (
   param3: number,
   param4: number
 ) => void;
+
+interface MyInterface {
+  myFunction(
+    param1: string,
+    param2: string,
+    param3: string,
+    param4: string
+  ): void;
+}
+
+const func2: (
+  param1: string,
+  param2: string,
+  param3: string,
+  param3: string
+) => void = (arg1, arg2, arg3, arg4) => {};
 ```
 
 Examples of **correct** code for this rule:
