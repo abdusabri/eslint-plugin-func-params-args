@@ -2,35 +2,28 @@
 
 Limit the number of function parameters and arguments with ease and flexibility!
 
-This plugin intends to give you control over how many parameters are used in function definitions (declarations), function expressions, and arrow function expressions. In addition to this, you can also set limits on how many arguments can be used when calling functions, where you can set a global limit, and have even finer control by providing limits for specific function calls (set by configuring/providing the name of a function).
+This plugin intends to give you control over how many parameters are used in function definitions (declarations), function expressions, arrow function expressions, and TypeScript function type annotations. In addition to this, you can also set limits on how many arguments can be used when calling functions, where you can set a global limit, and have even finer control by providing limits for specific function calls (set by configuring/providing the name of a function).
 
 [![Travis (.com) branch](https://img.shields.io/travis/com/abdusabri/eslint-plugin-func-params-args/master)](https://app.travis-ci.com/github/abdusabri/eslint-plugin-func-params-args) [![Coveralls github branch](https://img.shields.io/coveralls/github/abdusabri/eslint-plugin-func-params-args/master?logo=coveralls&style=flat-square)](https://coveralls.io/github/abdusabri/eslint-plugin-func-params-args) ![Depfu](https://img.shields.io/depfu/abdusabri/eslint-plugin-func-params-args?style=flat-square)
 
 ## Table of contents
 
-- [Why](#why)
-
-- [Installation](#installation)
-
-- [General usage notes](#general-usage-notes)
-
-  - [No defaults](#no-defaults)
-
-  - [Non-JavaScript files](#non-javascript-files)
-
-- [Available rules](#available-rules)
-
-- [What is next](#what-is-next)
-
-- [Contributing](#contributing)
-
-  - [General guidelines](#general-guidelines)
-
-  - [Development guidelines](#general-guidelines)
-
-- [Code of conduct](#code-of-conduct)
-
-- [Inspiration and credits](#Inspiration-and-credits)
+- [eslint-plugin-func-params-args](#eslint-plugin-func-params-args)
+  - [Table of contents](#table-of-contents)
+  - [Why](#why)
+  - [Installation](#installation)
+  - [General usage notes](#general-usage-notes)
+    - [No defaults](#no-defaults)
+    - [Non-JavaScript files](#non-javascript-files)
+  - [Available rules](#available-rules)
+  - [What is next](#what-is-next)
+  - [Contributing](#contributing)
+    - [General guidelines](#general-guidelines)
+      - [Documentation notes](#documentation-notes)
+    - [Development guidelines](#development-guidelines)
+      - [Development notes](#development-notes)
+  - [Code of conduct](#code-of-conduct)
+  - [Inspiration and credits](#inspiration-and-credits)
 
 ## Why
 
@@ -148,7 +141,7 @@ In general, all feedback is welcome, and I would love to get more ideas and cont
 
 - Add more examples on how to handle non-JS files, like `.vue` files for instance
 
-- Currently, in `func-params` rule, when there is an error reported, in addition to the code location (file and line number), an error message like `function has too many parameters (3). Maximum allowed is (2).` is reported. An improvement would be to report the name of the function (or the variable name in the case of a function expression) in the message instead of the generic `function`. For example, a message like `function has too many parameters...` could be `handleSubmit has too many parameters...` instead
+- ~~Currently, in `func-params` rule, when there is an error reported, in addition to the code location (file and line number), an error message like `function has too many parameters (3). Maximum allowed is (2).` is reported. An improvement would be to report the name of the function (or the variable name in the case of a function expression) in the message instead of the generic `function`. For example, a message like `function has too many parameters...` could be `handleSubmit has too many parameters...` instead~~ **Added in v3**
 
 - Consider adding options for pattern matching. Maybe as a start, support `startsWith` and `endsWith` options. Could be useful if you use or have Node-style function names that end with a specific pattern like `[whatever]Sync` or `[whatever]Async`
 

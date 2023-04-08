@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-func-params-args",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Limit the number of function parameters and arguments with ease and flexibility",
   "author": "Abdulrahman (Abdu) Assabri <abdusabri@abdusabri.com>",
   "keywords": [
