@@ -57,7 +57,7 @@ ruleTester.run('func-params', rule, {
       ].map((code) => ({
         code,
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -76,7 +76,7 @@ ruleTester.run('func-params', rule, {
         code,
         options: [{ global: 1, funcDefinition: 2 }],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -95,7 +95,7 @@ ruleTester.run('func-params', rule, {
         code,
         options: [{ global: 1, funcExpression: 2 }],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -114,7 +114,7 @@ ruleTester.run('func-params', rule, {
         code,
         options: [{ global: 1, arrowFuncExpression: 2 }],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -133,7 +133,7 @@ ruleTester.run('func-params', rule, {
         code,
         options: [{ global: 1, funcTypeAnnotation: 2 }],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -160,7 +160,7 @@ ruleTester.run('func-params', rule, {
           },
         ],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -185,7 +185,7 @@ ruleTester.run('func-params', rule, {
           },
         ],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -209,7 +209,7 @@ ruleTester.run('func-params', rule, {
           },
         ],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -234,7 +234,7 @@ ruleTester.run('func-params', rule, {
           },
         ],
         parserOptions,
-      }))
+      })),
     )
     .concat(
       [
@@ -259,7 +259,7 @@ ruleTester.run('func-params', rule, {
           },
         ],
         parserOptions,
-      }))
+      })),
     ),
 
   invalid: [
