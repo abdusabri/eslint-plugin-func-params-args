@@ -69,7 +69,7 @@ interface IFoo {
     param1: string,
     param2: string,
     param3: string,
-    param4: string
+    param4: string,
   ) => void;
 }
 
@@ -78,7 +78,7 @@ type FooType = {
     param1: number,
     param2: number,
     param3: number,
-    param4: number
+    param4: number,
   ) => void;
 };
 
@@ -86,7 +86,7 @@ type onBarFn = (
   param1: number,
   param2: number,
   param3: number,
-  param4: number
+  param4: number,
 ) => void;
 
 interface MyInterface {
@@ -94,7 +94,7 @@ interface MyInterface {
     param1: string,
     param2: string,
     param3: string,
-    param4: string
+    param4: string,
   ): void;
 }
 
@@ -102,7 +102,7 @@ const func2: (
   param1: string,
   param2: string,
   param3: string,
-  param3: string
+  param3: string,
 ) => void = (arg1, arg2, arg3, arg4) => {};
 ```
 
