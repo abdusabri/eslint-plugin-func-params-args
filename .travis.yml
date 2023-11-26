@@ -3,9 +3,9 @@ dist: focal
 language: node_js
 
 node_js:
+  - 20
   - 18
   - 16
-  - 14
 
 before_script:
   - npm prune
