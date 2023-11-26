@@ -20,7 +20,7 @@ var rule = require('../../../lib/rules/func-params'),
 const parserOptions = { ecmaVersion: 6 };
 
 var ruleTester = new RuleTester({
-  parser: resolve('./node_modules/@typescript-eslint/parser'),
+  parser: require.resolve('@typescript-eslint/parser'),
 });
 ruleTester.run('func-params', rule, {
   valid: [
