@@ -3,7 +3,7 @@ dist: focal
 language: node_js
 
 node_js:
-  - 20
+  - 20.19.3
   - 18
   - 16
 
