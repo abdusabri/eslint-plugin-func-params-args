@@ -178,7 +178,6 @@ All contributions are welcome and appreciated. If you want to help out, please f
 - If the changes you are working on require documentation updates, please update the docs accordingly
 
 - When you are ready to open a PR (all pull requests should be opened against master branch):
-
   - Add a summary explaining your changes
 
   - Add `Fixes #[issue number]` or `Closes #[issue number]` in the PR description
@@ -195,7 +194,7 @@ All contributions are welcome and appreciated. If you want to help out, please f
 
 ## Code of conduct
 
-This project adopts Contributor Covenant's Code of Conduct. You can read it in full [here](./CODE_OF_CONDUCT.md), which has my email address included.
+This project adopts Contributor Covenant's Code of Conduct. You can read it in full in [CODE_OF_CONDUCT](./CODE_OF_CONDUCT.md), which has my email address included.
 
 ## Inspiration and credits
 
@@ -205,8 +204,7 @@ This work wouldn't have been possible without the power of open source and peopl
 
 - [AST explorer](https://astexplorer.net/)
 
-- ESLint's developer guide, especially [Working with Plugins](https://eslint.org/docs/developer-guide/working-with-plugins) and [Working with Rules
-  ](https://eslint.org/docs/developer-guide/working-with-rules)
+- ESLint's developer guide, especially [Working with Plugins](https://eslint.org/docs/developer-guide/working-with-plugins) and [Working with Rules](https://eslint.org/docs/developer-guide/working-with-rules)
 
 - ESlint's [max-params rule](https://eslint.org/docs/rules/max-params#enforce-a-maximum-number-of-parameters-in-function-definitions-max-params), and its linked sources on GitHub
 
@@ -215,7 +213,6 @@ This work wouldn't have been possible without the power of open source and peopl
 - [You-Dont-Need-Lodash-Underscore](https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore)
 
 - Articles and Q&A
-
   - [Create custom ESLint rules in 2 minutes](https://blog.webiny.com/create-custom-eslint-rules-in-2-minutes-e3d41cb6a9a0)
 
   - [Writing custom EsLint rules](https://www.kenneth-truyers.net/2016/05/27/writing-custom-eslint-rules/)
