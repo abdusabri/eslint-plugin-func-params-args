@@ -195,7 +195,7 @@ All contributions are welcome and appreciated. If you want to help out, please f
 
 ## Code of conduct
 
-This project adopts Contributor Covenant's Code of Conduct. You can read it in full [here](./CODE_OF_CONDUCT.md), which has my email address included.
+This project adopts Contributor Covenant's Code of Conduct. You can read it in full [here (CODE_OF_CONDUCT)](./CODE_OF_CONDUCT.md), which has my email address included.
 
 ## Inspiration and credits
 
@@ -205,8 +205,7 @@ This work wouldn't have been possible without the power of open source and peopl
 
 - [AST explorer](https://astexplorer.net/)
 
-- ESLint's developer guide, especially [Working with Plugins](https://eslint.org/docs/developer-guide/working-with-plugins) and [Working with Rules
-  ](https://eslint.org/docs/developer-guide/working-with-rules)
+- ESLint's developer guide, especially [Working with Plugins](https://eslint.org/docs/developer-guide/working-with-plugins) and [Working with Rules](https://eslint.org/docs/developer-guide/working-with-rules)
 
 - ESlint's [max-params rule](https://eslint.org/docs/rules/max-params#enforce-a-maximum-number-of-parameters-in-function-definitions-max-params), and its linked sources on GitHub
 
