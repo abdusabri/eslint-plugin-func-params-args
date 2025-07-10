@@ -201,7 +201,7 @@ This project adopts Contributor Covenant's Code of Conduct. You can read it in f
 
 This work wouldn't have been possible without the power of open source and people who share their knowledge and experiences. Following are some sources of inspiration and references that helped me while creating this plugin/project.
 
-- [@gitlab/eslint-plugin](https://gitlab.com/gitlab-org/frontend/eslint-plugin), especially [this Merge Request (MR)](https://gitlab.com/gitlab-org/frontend/eslint-plugin/-/merge_requests/19) and [my MR](https://gitlab.com/gitlab-org/frontend/eslint-plugin/-/merge_requests/20) :)
+- [@gitlab/eslint-plugin](https://gitlab.com/gitlab-org/frontend/eslint-plugin), especially [this Merge Request (MR)](https://gitlab.com/gitlab-org/frontend/eslint-plugin/-/merge_requests/19) and [my MR](https://gitlab.com/gitlab-org/frontend/eslint-plugin/-/merge_requests/20)
 
 - [AST explorer](https://astexplorer.net/)
 
