@@ -4,7 +4,7 @@ Limit the number of function parameters and arguments with ease and flexibility!
 
 This plugin intends to give you control over how many parameters are used in function definitions (declarations), function expressions, arrow function expressions, and TypeScript function type annotations. In addition to this, you can also set limits on how many arguments can be used when calling functions, where you can set a global limit, and have even finer control by providing limits for specific function calls (set by configuring/providing the name of a function).
 
-[![GitHub Actions Status](https://img.shields.io/github/actions/workflow/status/abdusabri/eslint-plugin-func-params-args/nodejs.yml?branch=main)](https://github.com/abdusabri/eslint-plugin-func-params-args/actions) [![Coveralls github branch](https://img.shields.io/coveralls/github/abdusabri/eslint-plugin-func-params-args/master?logo=coveralls&style=flat-square)](https://coveralls.io/github/abdusabri/eslint-plugin-func-params-args) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
+[![GitHub Actions Status](https://img.shields.io/github/actions/workflow/status/abdusabri/eslint-plugin-func-params-args/nodejs.yml?branch=master)](https://github.com/abdusabri/eslint-plugin-func-params-args/actions) [![Coveralls github branch](https://img.shields.io/coveralls/github/abdusabri/eslint-plugin-func-params-args/master?logo=coveralls&style=flat-square)](https://coveralls.io/github/abdusabri/eslint-plugin-func-params-args) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 ## Table of contents
 
