@@ -19,7 +19,7 @@ var rule = require('../../../lib/rules/func-params'),
 // ESLint 8: uses eslintrc format (parser string, parserOptions)
 // ESLint 9: uses flat config format (languageOptions.parser object)
 const eslintVersion = require('eslint/package.json').version;
-const isEslint9 = eslintVersion.startsWith('9');
+const isEslint9OrLater = parseInt(eslintVersion.split('.')[0], 10) >= 9;
 
 const ruleTesterConfig = isEslint9
   ? {
