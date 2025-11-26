@@ -7,13 +7,12 @@ on:
     branches: ['*']
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [22, 20, 18]
-        eslint-version: [8, 9]
-    name: Node ${{ matrix.node-version }} / ESLint ${{ matrix.eslint-version }}
+        node-version: [20, 18, 16]
+    name: Node.js ${{ matrix.node-version }} build
     steps:
       - uses: actions/checkout@v6
 
@@ -27,10 +26,6 @@ jobs:
           npm prune
           npm install
 
-      - name: Install ESLint ${{ matrix.eslint-version }}
-        if: matrix.eslint-version == 9
-        run: npm install eslint@${{ matrix.eslint-version }} --save-dev
-
       - name: Run Prettier check
         run: npm run prettier:check
       - name: Run tests
@@ -43,7 +38,7 @@ jobs:
         run: npm run build
 
       - name: Upload coverage to Coveralls
-        if: success() && ((matrix.node-version == 18 && matrix.eslint-version == 8) || (matrix.node-version == 22 && matrix.eslint-version == 9))
+        if: success()
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: npm run coveralls
