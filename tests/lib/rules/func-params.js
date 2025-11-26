@@ -30,6 +30,7 @@ const ruleTesterConfig = isEslint9
     }
   : {
       parser: require.resolve('@typescript-eslint/parser'),
+      parserOptions: { ecmaVersion: 2022 },
     };
 
 var ruleTester = new RuleTester(ruleTesterConfig);
