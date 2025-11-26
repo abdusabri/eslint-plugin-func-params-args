@@ -27,7 +27,7 @@ const ruleTesterConfig = isEslint9
         ecmaVersion: 2022,
       },
     }
-  : {};
+  : { parserOptions: { ecmaVersion: 2022 } };
 
 const options = [{ foo: 3, bar: 2, global: 1 }];
 
