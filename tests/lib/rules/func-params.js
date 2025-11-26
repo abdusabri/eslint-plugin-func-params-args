@@ -8,32 +8,14 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/func-params'),
-  RuleTester = require('eslint').RuleTester;
+var rule = require('../../../lib/rules/func-params');
+var { createRuleTester } = require('../test-utils');
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-// Detect ESLint version and use appropriate config format
-// ESLint 8: uses eslintrc format (parser string, parserOptions)
-// ESLint 9: uses flat config format (languageOptions.parser object)
-const eslintVersion = require('eslint/package.json').version;
-const isEslint9OrLater = parseInt(eslintVersion.split('.')[0], 10) >= 9;
-
-const ruleTesterConfig = isEslint9
-  ? {
-      languageOptions: {
-        ecmaVersion: 2022,
-        parser: require('@typescript-eslint/parser'),
-      },
-    }
-  : {
-      parser: require.resolve('@typescript-eslint/parser'),
-      parserOptions: { ecmaVersion: 2022 },
-    };
-
-var ruleTester = new RuleTester(ruleTesterConfig);
+var ruleTester = createRuleTester({ parser: '@typescript-eslint/parser' });
 ruleTester.run('func-params', rule, {
   valid: [
     'function test(param1) {}',
