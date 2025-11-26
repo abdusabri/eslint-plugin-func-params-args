@@ -8,8 +8,6 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var resolve = require('path').resolve;
-
 var rule = require('../../../lib/rules/func-params'),
   RuleTester = require('eslint').RuleTester;
 
@@ -17,11 +15,24 @@ var rule = require('../../../lib/rules/func-params'),
 // Tests
 //------------------------------------------------------------------------------
 
-const parserOptions = { ecmaVersion: 6 };
+// Detect ESLint version and use appropriate config format
+// ESLint 8: uses eslintrc format (parser string, parserOptions)
+// ESLint 9: uses flat config format (languageOptions.parser object)
+const eslintVersion = require('eslint/package.json').version;
+const isEslint9 = eslintVersion.startsWith('9');
 
-var ruleTester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-});
+const ruleTesterConfig = isEslint9
+  ? {
+      languageOptions: {
+        ecmaVersion: 2022,
+        parser: require('@typescript-eslint/parser'),
+      },
+    }
+  : {
+      parser: require.resolve('@typescript-eslint/parser'),
+    };
+
+var ruleTester = new RuleTester(ruleTesterConfig);
 ruleTester.run('func-params', rule, {
   valid: [
     'function test(param1) {}',
@@ -39,7 +50,6 @@ ruleTester.run('func-params', rule, {
     .map((code) => ({
       code,
       options: [{ global: 1 }],
-      parserOptions,
     }))
     .concat(
       [
@@ -56,7 +66,6 @@ ruleTester.run('func-params', rule, {
         'type onBarFn = (param1:number, param2:number, param3:number, param4:number, param5:number) => void;',
       ].map((code) => ({
         code,
-        parserOptions,
       })),
     )
     .concat(
@@ -75,7 +84,6 @@ ruleTester.run('func-params', rule, {
       ].map((code) => ({
         code,
         options: [{ global: 1, funcDefinition: 2 }],
-        parserOptions,
       })),
     )
     .concat(
@@ -94,7 +102,6 @@ ruleTester.run('func-params', rule, {
       ].map((code) => ({
         code,
         options: [{ global: 1, funcExpression: 2 }],
-        parserOptions,
       })),
     )
     .concat(
@@ -113,7 +120,6 @@ ruleTester.run('func-params', rule, {
       ].map((code) => ({
         code,
         options: [{ global: 1, arrowFuncExpression: 2 }],
-        parserOptions,
       })),
     )
     .concat(
@@ -132,7 +138,6 @@ ruleTester.run('func-params', rule, {
       ].map((code) => ({
         code,
         options: [{ global: 1, funcTypeAnnotation: 2 }],
-        parserOptions,
       })),
     )
     .concat(
@@ -159,7 +164,6 @@ ruleTester.run('func-params', rule, {
             funcTypeAnnotation: 0,
           },
         ],
-        parserOptions,
       })),
     )
     .concat(
@@ -184,7 +188,6 @@ ruleTester.run('func-params', rule, {
             funcExpression: 2,
           },
         ],
-        parserOptions,
       })),
     )
     .concat(
@@ -208,7 +211,6 @@ ruleTester.run('func-params', rule, {
             funcExpression: 0,
           },
         ],
-        parserOptions,
       })),
     )
     .concat(
@@ -233,7 +235,6 @@ ruleTester.run('func-params', rule, {
             arrowFuncExpression: -1,
           },
         ],
-        parserOptions,
       })),
     )
     .concat(
@@ -258,7 +259,6 @@ ruleTester.run('func-params', rule, {
             funcTypeAnnotation: -1,
           },
         ],
-        parserOptions,
       })),
     ),
 
@@ -277,7 +277,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'a = (param1, param2) => {};',
       options: [{ global: 1 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -300,7 +299,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'c.forEach((param1, param2) => {});',
       options: [{ global: 1 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -314,7 +312,6 @@ ruleTester.run('func-params', rule, {
         onBar: (param1:string, param1:string) => void;
       }`,
       options: [{ global: 1 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -326,7 +323,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'type onBarFn = (param1:string, param1:string) => void;',
       options: [{ global: 1 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -349,7 +345,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'a = (param1, param2) => {};',
       options: [{ global: 1, funcDefinition: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -372,7 +367,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'c.forEach((param1, param2) => {});',
       options: [{ global: 1, funcDefinition: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -395,7 +389,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'a = (param1, param2) => {};',
       options: [{ global: 1, funcExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -418,7 +411,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'c.forEach((param1, param2) => {});',
       options: [{ global: 1, funcExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -432,7 +424,6 @@ ruleTester.run('func-params', rule, {
         onBar: (param1:string, param2:string) => void;
       }`,
       options: [{ global: 1, funcExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -444,7 +435,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'type onBarFn = (param1:string, param2:string) => void;',
       options: [{ global: 1, funcExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -467,7 +457,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'a = (param1, param2, param3) => {};',
       options: [{ global: 1, arrowFuncExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -490,7 +479,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'c.forEach((param1, param2, param3) => {});',
       options: [{ global: 1, arrowFuncExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -504,7 +492,6 @@ ruleTester.run('func-params', rule, {
         onBar: (param1:string, param2:string) => void;
       }`,
       options: [{ global: 1, arrowFuncExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -516,7 +503,6 @@ ruleTester.run('func-params', rule, {
     {
       code: 'type onBarFn = (param1:string, param2:string) => void;',
       options: [{ global: 1, arrowFuncExpression: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -530,7 +516,6 @@ ruleTester.run('func-params', rule, {
         onBar: (param1:string, param2:string, param3:string) => void;
       }`,
       options: [{ global: 1, funcTypeAnnotation: 2 }],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -569,7 +554,6 @@ ruleTester.run('func-params', rule, {
           funcTypeAnnotation: 0,
         },
       ],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -608,7 +592,6 @@ ruleTester.run('func-params', rule, {
           funcTypeAnnotation: 0,
         },
       ],
-      parserOptions,
       errors: [
         {
           type: 'ArrowFunctionExpression',
@@ -630,7 +613,6 @@ ruleTester.run('func-params', rule, {
           funcTypeAnnotation: 0,
         },
       ],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',
@@ -650,7 +632,6 @@ ruleTester.run('func-params', rule, {
           funcTypeAnnotation: 0,
         },
       ],
-      parserOptions,
       errors: [
         {
           type: 'TSFunctionType',

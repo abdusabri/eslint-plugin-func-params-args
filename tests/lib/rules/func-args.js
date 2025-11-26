@@ -15,9 +15,23 @@ var rule = require('../../../lib/rules/func-args'),
 // Tests
 //------------------------------------------------------------------------------
 
+// Detect ESLint version and use appropriate config format
+// ESLint 8: uses eslintrc format (parserOptions)
+// ESLint 9: uses flat config format (languageOptions)
+const eslintVersion = require('eslint/package.json').version;
+const isEslint9 = eslintVersion.startsWith('9');
+
+const ruleTesterConfig = isEslint9
+  ? {
+      languageOptions: {
+        ecmaVersion: 2022,
+      },
+    }
+  : {};
+
 const options = [{ foo: 3, bar: 2, global: 1 }];
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester(ruleTesterConfig);
 ruleTester.run('func-args', rule, {
   valid: [
     "foo('arg1');",
