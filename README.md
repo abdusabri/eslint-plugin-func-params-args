@@ -53,6 +53,8 @@ npm install eslint-plugin-func-params-args --save-dev
 
 ## General usage notes
 
+### ESLint v8 (eslintrc)
+
 Add `func-params-args` to the plugins section of your `.eslintrc.json` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
@@ -96,6 +98,54 @@ rules:
       '$emit': 2
 ```
 
+### ESLint v9 (flat config)
+
+For ESLint v9 with flat config (`eslint.config.js` or `eslint.config.mjs`), import the plugin and configure it as follows:
+
+```js
+import funcParamsArgs from 'eslint-plugin-func-params-args';
+
+export default [
+  {
+    plugins: {
+      'func-params-args': funcParamsArgs,
+    },
+    rules: {
+      'func-params-args/func-args': [
+        'warn',
+        {
+          global: 3,
+          $emit: 2,
+        },
+      ],
+    },
+  },
+];
+```
+
+Or using CommonJS (`eslint.config.cjs`):
+
+```js
+const funcParamsArgs = require('eslint-plugin-func-params-args');
+
+module.exports = [
+  {
+    plugins: {
+      'func-params-args': funcParamsArgs,
+    },
+    rules: {
+      'func-params-args/func-args': [
+        'warn',
+        {
+          global: 3,
+          $emit: 2,
+        },
+      ],
+    },
+  },
+];
+```
+
 As shown in the example above, the configuration approach for this plugin's rules uses a simple object structure (no arrays or nested objects), where keys like `$emit` are the options, and the value of a given key is the limit (like `2`). So, in the example above, it means that any calls to `$emit` function should have no more than `2` arguments, and the global limit for any other function call is `3`.
 
 ### No defaults
@@ -105,6 +155,8 @@ By design, this plugin's rules don't have pre-set defaults. So, you've to config
 ### Non-JavaScript files
 
 ESLint's eco-system is full of parsers and plugins taking care of non-JavaScript files, like TypeScript and JSX for example. This plugin doesn't provide its own parser (nor does it have a custom AST parsing logic). So, handling non-JS files depends on your existing ESLint setup.
+
+#### ESLint v8 (eslintrc)
 
 As an example, to use this plugin in TS files, you may configure parsing options in your `.eslintrc` file as follows:
 
@@ -126,6 +178,32 @@ Or you may override only the parsing of TS files if you've other parsers or plug
 ```
 
 In both examples above, you would need to install `@typescript-eslint/parser` from npm.
+
+#### ESLint v9 (flat config)
+
+For ESLint v9 with flat config, configure the parser in `languageOptions`:
+
+```js
+import funcParamsArgs from 'eslint-plugin-func-params-args';
+import tsParser from '@typescript-eslint/parser';
+
+export default [
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tsParser,
+    },
+    plugins: {
+      'func-params-args': funcParamsArgs,
+    },
+    rules: {
+      'func-params-args/func-params': ['warn', { global: 3 }],
+    },
+  },
+];
+```
+
+You would need to install `@typescript-eslint/parser` from npm.
 
 ## Available rules
 
