@@ -24,6 +24,8 @@ If you want to disable this rule (removing all restrictions) for any of the opti
 
 With a config like:
 
+ESLint v8 (eslintrc):
+
 ```json
 {
   "rules": {
@@ -37,6 +39,30 @@ With a config like:
     ]
   }
 }
+```
+
+ESLint v9 (flat config):
+
+```js
+import funcParamsArgs from 'eslint-plugin-func-params-args';
+
+export default [
+  {
+    plugins: {
+      'func-params-args': funcParamsArgs,
+    },
+    rules: {
+      'func-params-args/func-args': [
+        'warn',
+        {
+          global: 3,
+          bar: 2,
+          baz: 1,
+        },
+      ],
+    },
+  },
+];
 ```
 
 Examples of **incorrect** code for this rule:
@@ -77,6 +103,8 @@ b.baz('arg1');
 
 With a config like:
 
+ESLint v8 (eslintrc):
+
 ```json
 {
   "rules": {
@@ -88,6 +116,28 @@ With a config like:
     ]
   }
 }
+```
+
+ESLint v9 (flat config):
+
+```js
+import funcParamsArgs from 'eslint-plugin-func-params-args';
+
+export default [
+  {
+    plugins: {
+      'func-params-args': funcParamsArgs,
+    },
+    rules: {
+      'func-params-args/func-args': [
+        'warn',
+        {
+          foo: 2,
+        },
+      ],
+    },
+  },
+];
 ```
 
 Examples of **incorrect** code for this rule:

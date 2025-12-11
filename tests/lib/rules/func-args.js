@@ -8,8 +8,8 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/func-args'),
-  RuleTester = require('eslint').RuleTester;
+var rule = require('../../../lib/rules/func-args');
+var { createRuleTester } = require('../test-utils');
 
 //------------------------------------------------------------------------------
 // Tests
@@ -17,7 +17,7 @@ var rule = require('../../../lib/rules/func-args'),
 
 const options = [{ foo: 3, bar: 2, global: 1 }];
 
-var ruleTester = new RuleTester();
+var ruleTester = createRuleTester();
 ruleTester.run('func-args', rule, {
   valid: [
     "foo('arg1');",
