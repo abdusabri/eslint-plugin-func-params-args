@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 var rule = require('../../../lib/rules/func-args');
-var { createRuleTester } = require('../test-utils');
+var { createRuleTester, runRuleTester } = require('../test-utils');
 
 //------------------------------------------------------------------------------
 // Tests
@@ -18,7 +18,7 @@ var { createRuleTester } = require('../test-utils');
 const options = [{ foo: 3, bar: 2, global: 1 }];
 
 var ruleTester = createRuleTester();
-ruleTester.run('func-args', rule, {
+runRuleTester(ruleTester, 'func-args', rule, {
   valid: [
     "foo('arg1');",
     "a.foo('arg1');",

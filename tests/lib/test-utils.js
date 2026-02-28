@@ -71,6 +71,25 @@ function createRuleTester(options = {}) {
   return new RuleTester(createRuleTesterConfig(options));
 }
 
+function normalizeTestsForEslint10(tests) {
+  if (getEslintMajorVersion() < 10 || !tests.invalid) {
+    return tests;
+  }
+
+  return {
+    ...tests,
+    invalid: tests.invalid.map((testCase) => ({
+      ...testCase,
+      errors: testCase.errors?.map(({ type, ...error }) => error),
+    })),
+  };
+}
+
+function runRuleTester(ruleTester, ruleName, rule, tests) {
+  ruleTester.run(ruleName, rule, normalizeTestsForEslint10(tests));
+}
+
 module.exports = {
   createRuleTester,
+  runRuleTester,
 };
