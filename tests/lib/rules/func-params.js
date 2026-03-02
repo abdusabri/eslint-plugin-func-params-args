@@ -9,14 +9,14 @@
 //------------------------------------------------------------------------------
 
 var rule = require('../../../lib/rules/func-params');
-var { createRuleTester } = require('../test-utils');
+var { createRuleTester, runRuleTester } = require('../test-utils');
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
 var ruleTester = createRuleTester({ parser: '@typescript-eslint/parser' });
-ruleTester.run('func-params', rule, {
+runRuleTester(ruleTester, 'func-params', rule, {
   valid: [
     'function test(param1) {}',
     'a = (param1) => {};',

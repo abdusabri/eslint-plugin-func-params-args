@@ -24,14 +24,14 @@ function isEslint9OrLater() {
 }
 
 /**
- * Creates a RuleTester configuration object compatible with both ESLint 8 and 9.
+ * Creates a RuleTester configuration object compatible with ESLint 8, 9 and 10.
  *
  * ESLint 8 uses eslintrc format (parser string, parserOptions)
- * ESLint 9 uses flat config format (languageOptions.parser object)
+ * ESLint 9 and 10 use flat config format (languageOptions.parser object)
  *
  * @param {Object} options - Configuration options
  * @param {number} [options.ecmaVersion=2022] - ECMAScript version
- * @param {string|null} [options.parser=null] - Parser module path (for ESLint 8) or parser object (for ESLint 9)
+ * @param {string|null} [options.parser=null] - Parser module path (for ESLint 8) or parser object (for ESLint 9/10)
  * @returns {Object} RuleTester configuration object
  */
 function createRuleTesterConfig(options = {}) {
@@ -60,7 +60,7 @@ function createRuleTesterConfig(options = {}) {
 }
 
 /**
- * Creates a configured RuleTester instance compatible with both ESLint 8 and 9.
+ * Creates a configured RuleTester instance compatible with ESLint 8, 9 and 10.
  *
  * @param {Object} options - Configuration options
  * @param {number} [options.ecmaVersion=2022] - ECMAScript version
@@ -71,6 +71,42 @@ function createRuleTester(options = {}) {
   return new RuleTester(createRuleTesterConfig(options));
 }
 
+/**
+ * Normalizes invalid test cases for ESLint 10+ RuleTester compatibility.
+ *
+ * ESLint 10 no longer allows `type` in expected error objects.
+ *
+ * @param {Object} tests - RuleTester test object
+ * @returns {Object} Normalized tests for the active ESLint version
+ */
+function normalizeTestsForEslint10(tests) {
+  if (getEslintMajorVersion() < 10 || !tests.invalid) {
+    return tests;
+  }
+
+  return {
+    ...tests,
+    invalid: tests.invalid.map((testCase) => ({
+      ...testCase,
+      errors: testCase.errors?.map(({ type, ...error }) => error),
+    })),
+  };
+}
+
+/**
+ * Runs RuleTester with version-aware test normalization.
+ *
+ * @param {RuleTester} ruleTester - RuleTester instance
+ * @param {string} ruleName - ESLint rule name
+ * @param {Object} rule - ESLint rule module
+ * @param {Object} tests - RuleTester tests object
+ * @returns {void}
+ */
+function runRuleTester(ruleTester, ruleName, rule, tests) {
+  ruleTester.run(ruleName, rule, normalizeTestsForEslint10(tests));
+}
+
 module.exports = {
   createRuleTester,
+  runRuleTester,
 };
