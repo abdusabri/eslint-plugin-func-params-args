@@ -28,7 +28,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint lib/rules/ tests/lib/rules/",
+    "lint": "eslint lib/rules/ tests/lib/rules/",
     "prettier:fix": "prettier --write **/*.{js,json,md}",
     "prettier:check": "prettier --check **/*.{js,json,md}",
     "test:unit": "mocha tests --recursive",
@@ -50,7 +50,7 @@
     "babel-minify": "^0.5.1",
     "coveralls": "^3.1.0",
     "eslint": "9.39.3",
-    "eslint-plugin-eslint-plugin": "^6.5.0",
+    "eslint-plugin-eslint-plugin": "^7.0.0",
     "husky": "^9.0.0",
     "lint-staged": "^16.0.0",
     "mocha": "^11.0.0",
