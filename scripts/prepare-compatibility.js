@@ -31,11 +31,7 @@ writeFileSync(
       '@typescript-eslint/parser':
         pkg.devDependencies['@typescript-eslint/parser'],
       typescript: pkg.devDependencies.typescript,
-      // Mocha 12 cannot run on the plugin's Node 20.9 minimum.
-      mocha:
-        process.env.MINIMUM_NODE === 'true'
-          ? '10.8.2'
-          : pkg.devDependencies.mocha,
+      mocha: pkg.devDependencies.mocha,
     },
   }),
 );
