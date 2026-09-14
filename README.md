@@ -98,9 +98,9 @@ rules:
       '$emit': 2
 ```
 
-### ESLint v9 (flat config)
+### ESLint v9/v10 (flat config)
 
-For ESLint v9 with flat config (`eslint.config.js` or `eslint.config.mjs`), import the plugin and configure it as follows:
+For ESLint v9 or v10 with flat config (`eslint.config.js` or `eslint.config.mjs`), import the plugin and configure it as follows:
 
 ```js
 import funcParamsArgs from 'eslint-plugin-func-params-args';
@@ -179,9 +179,9 @@ Or you may override only the parsing of TS files if you've other parsers or plug
 
 In both examples above, you would need to install `@typescript-eslint/parser` from npm.
 
-#### ESLint v9 (flat config)
+#### ESLint v9/v10 (flat config)
 
-For ESLint v9 with flat config, configure the parser in `languageOptions`:
+For ESLint v9 or v10 with flat config, configure the parser in `languageOptions`:
 
 ```js
 import funcParamsArgs from 'eslint-plugin-func-params-args';
@@ -308,3 +308,21 @@ This work wouldn't have been possible without the power of open source and peopl
 - This course [Code Transformation and Linting with ASTs](https://frontendmasters.com/courses/linting-asts/)
 
 - Badges from [shields.io](https://shields.io/)
+
+## Development and compatibility
+
+Use Node.js 24 for development (`nvm use`), then run `npm ci`.
+The published plugin supports Node.js >=20.9.0 with ESLint 8.57+, 9, or 10,
+subject to the selected ESLint version's own Node.js requirements. ESLint 10
+requires Node.js ^20.19.0, ^22.13.0, or >=24.
+
+CI runs formatting, linting, coverage (100% thresholds), and builds on Node 24.
+The existing rule tests run separately on Node 20, 22, 24, and 26 with each
+supported ESLint major, plus explicit minimum-version combinations. An isolated
+test environment keeps contributor tools out of compatibility testing. Node 20
+is retained for compatibility even though it has reached upstream end of life.
+
+`npm run build` copies the CommonJS source into `dist` without minification.
+Run it before publishing. Husky runs lint-staged on commit. TypeScript 7 remains
+deferred until @typescript-eslint/parser supports it; use the TypeScript 6
+version declared in this repository for rule tests.

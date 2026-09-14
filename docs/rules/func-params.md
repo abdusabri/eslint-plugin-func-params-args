@@ -53,7 +53,7 @@ ESLint v8 (eslintrc):
 }
 ```
 
-ESLint v9 (flat config):
+ESLint v9/v10 (flat config):
 
 ```js
 import funcParamsArgs from 'eslint-plugin-func-params-args';
@@ -181,7 +181,7 @@ ESLint v8 (eslintrc):
 }
 ```
 
-ESLint v9 (flat config):
+ESLint v9/v10 (flat config):
 
 ```js
 import funcParamsArgs from 'eslint-plugin-func-params-args';
