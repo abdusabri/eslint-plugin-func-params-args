@@ -31,7 +31,11 @@ writeFileSync(
       '@typescript-eslint/parser':
         pkg.devDependencies['@typescript-eslint/parser'],
       typescript: pkg.devDependencies.typescript,
-      mocha: pkg.devDependencies.mocha,
+      // Mocha 12 requires Node 20.19+. Retain Mocha 11 only for Node 20.9 tests.
+      mocha:
+        process.env.MINIMUM_NODE === 'true'
+          ? '^11.0.0'
+          : pkg.devDependencies.mocha,
     },
   }),
 );
