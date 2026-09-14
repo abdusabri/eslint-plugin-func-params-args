@@ -324,7 +324,8 @@ test environment keeps contributor tools out of compatibility testing. The Node
 jobs use the declared Mocha 12 dependency. Node 20
 is retained for compatibility even though it has reached upstream end of life.
 
-`npm run build` copies the CommonJS source into `dist` without minification.
+`npm run build` removes the previous `dist` directory with rimraf and minifies
+the CommonJS source into `dist` with babel-minify.
 Run it before publishing. Husky runs lint-staged on commit. TypeScript 7 remains
 deferred until @typescript-eslint/parser supports it; use the TypeScript 6
 version declared in this repository for rule tests.

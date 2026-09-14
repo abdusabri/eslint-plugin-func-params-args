@@ -36,7 +36,7 @@
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "cover": "nyc report --reporter=lcov",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build": "node scripts/build.js",
+    "build": "rimraf dist && minify lib -d dist",
     "prepare": "husky"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^8.0.0",
+    "babel-minify": "^0.5.1",
     "coveralls": "^3.1.0",
     "eslint": "10.10.0",
     "eslint-plugin-eslint-plugin": "^7.3.1",
@@ -55,6 +56,7 @@
     "mocha": "^12.0.0",
     "nyc": "^18.0.0",
     "prettier": "^3.1.0",
+    "rimraf": "^6.0.0",
     "typescript": "^6.0.3"
   },
   "files": [
