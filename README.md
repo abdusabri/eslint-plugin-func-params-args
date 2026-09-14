@@ -319,7 +319,9 @@ requires Node.js ^20.19.0, ^22.13.0, or >=24.
 CI runs formatting, linting, coverage (100% thresholds), and builds on Node 24.
 The existing rule tests run separately on Node 20, 22, 24, and 26 with each
 supported ESLint major, plus explicit minimum-version combinations. An isolated
-test environment keeps contributor tools out of compatibility testing. Node 20
+test environment keeps contributor tools out of compatibility testing. The Node
+20.9 jobs use Mocha 11 because Mocha 12 requires Node 20.19 or newer; all other
+jobs use the declared Mocha 12 dependency. Node 20
 is retained for compatibility even though it has reached upstream end of life.
 
 `npm run build` copies the CommonJS source into `dist` without minification.
