@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -58,7 +58,7 @@ jobs:
             eslint-version: 10.0.0
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
       - name: Prepare isolated rule-test dependencies
@@ -68,7 +68,7 @@ jobs:
           MINIMUM_NODE: ${{ matrix.minimum-node || false }}
         run: node scripts/prepare-compatibility.js
       - name: Select runtime under test
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run existing rule tests
