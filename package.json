@@ -29,25 +29,24 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint lib/rules/ tests/lib/rules/",
-    "prettier:fix": "prettier --write **/*.{js,mjs,json,md}",
-    "prettier:check": "prettier --check **/*.{js,mjs,json,md}",
+    "prettier:fix": "prettier --write .",
+    "prettier:check": "prettier --check .",
     "test:unit": "mocha tests --recursive",
     "test": "nyc mocha tests --recursive",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "cover": "nyc report --reporter=lcov",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build": "rimraf dist && minify lib -d dist"
+    "build": "node scripts/build.js",
+    "prepare": "husky"
   },
   "dependencies": {
-    "@eslint-community/eslint-utils": "^4.4.0",
-    "requireindex": "~1.2.0"
+    "@eslint-community/eslint-utils": "^4.4.0"
   },
   "peerDependencies": {
     "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^8.0.0",
-    "babel-minify": "^0.5.1",
     "coveralls": "^3.1.0",
     "eslint": "9.39.5",
     "eslint-plugin-eslint-plugin": "^7.3.1",
@@ -56,7 +55,6 @@
     "mocha": "^11.0.0",
     "nyc": "^18.0.0",
     "prettier": "^3.1.0",
-    "rimraf": "^6.0.0",
     "typescript": "^6.0.3"
   },
   "files": [
@@ -65,11 +63,6 @@
     "docs",
     "dist"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,mjs,json,md}": "prettier --write"
   }
