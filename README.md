@@ -311,12 +311,12 @@ This work wouldn't have been possible without the power of open source and peopl
 
 ## Development and compatibility
 
-Use Node.js 24 for development (`nvm use`), then run `npm ci`.
+Use Node.js 26 for development (`nvm use`), then run `npm ci`.
 The published plugin supports Node.js >=20.9.0 with ESLint 8.57+, 9, or 10,
 subject to the selected ESLint version's own Node.js requirements. ESLint 10
 requires Node.js ^20.19.0, ^22.13.0, or >=24.
 
-CI runs formatting, linting, coverage (100% thresholds), and builds on Node 24.
+CI runs formatting, linting, coverage (100% thresholds), and builds on Node 26.
 The existing rule tests run separately on Node 20, 22, 24, and 26 with each
 supported ESLint major, plus explicit minimum-version combinations. An isolated
 test environment keeps contributor tools out of compatibility testing. The Node
